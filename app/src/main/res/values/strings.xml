@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Juegos para Chicos</string>
+
+    <!-- Menú principal -->
+    <string name="menu_title">¡A Jugar!</string>
+    <string name="game_memory">Memoria</string>
+    <string name="game_paint">Pintar</string>
+    <string name="game_colors">Colores y Formas</string>
+
+    <!-- Juego de Memoria -->
+    <string name="memory_level_easy">Fácil (2x2)</string>
+    <string name="memory_level_medium">Medio (3x2)</string>
+    <string name="memory_completed">¡Muy bien!</string>
+    <string name="memory_play_again">Jugar otra vez</string>
+
+    <!-- Juego de Pintar -->
+    <string name="paint_clear">Borrar todo</string>
+    <string name="paint_back">Volver</string>
+
+    <!-- Juego de Colores y Formas -->
+    <string name="colors_instruction">Escuchá y tocá</string>
+
+    <!-- Botones comunes -->
+    <string name="btn_home">Inicio</string>
+    <string name="btn_back">Volver</string>
+</resources>

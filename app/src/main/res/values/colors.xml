@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colores principales - Paleta amigable para niños -->
+    <color name="primary">#FF6B9D</color>
+    <color name="primary_dark">#E55A8A</color>
+    <color name="accent">#FFD93D</color>
+
+    <!-- Colores de fondo -->
+    <color name="background">#FFF9E6</color>
+    <color name="surface">#FFFFFF</color>
+
+    <!-- Colores para el juego de pintar -->
+    <color name="paint_red">#FF6B6B</color>
+    <color name="paint_blue">#4ECDC4</color>
+    <color name="paint_yellow">#FFE66D</color>
+    <color name="paint_green">#95E1D3</color>
+    <color name="paint_purple">#C77DFF</color>
+    <color name="paint_orange">#FFA94D</color>
+
+    <!-- Colores para formas -->
+    <color name="shape_red">#FF6B6B</color>
+    <color name="shape_blue">#4ECDC4</color>
+    <color name="shape_yellow">#FFE66D</color>
+    <color name="shape_green">#95E1D3</color>
+
+    <!-- Utilidad -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray_light">#F0F0F0</color>
+    <color name="text_primary">#333333</color>
+</resources>
