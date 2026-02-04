@@ -55,7 +55,7 @@ import kotlinx.coroutines.delay
 
 /**
  * Juego de Memoria
- * - Dos niveles: Fácil (2x2) y Medio (3x2)
+ * - Tres niveles: Fácil (2x2), Medio (3x2) y Difícil (4x3)
  * - Encuentra las parejas de animales
  * - Sin tiempo límite, sin perder
  */
@@ -93,7 +93,7 @@ fun MemoryGameScreen(
 }
 
 /**
- * Selector de nivel (Fácil o Medio)
+ * Selector de nivel (Fácil, Medio o Difícil)
  */
 @Composable
 private fun LevelSelector(
@@ -178,6 +178,30 @@ private fun LevelSelector(
         ) {
             Text(
                 text = "Medio (3x2)",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            )
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // Botón Difícil
+        Button(
+            onClick = {
+                soundManager.playSound(SoundManager.SoundType.TAP)
+                onSelectLevel(MemoryLevel.HARD)
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(80.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFFFF6B9D)
+            ),
+            shape = RoundedCornerShape(16.dp)
+        ) {
+            Text(
+                text = "Difícil (4x3)",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
@@ -270,7 +294,11 @@ private fun MemoryGame(
             }
 
             Text(
-                text = if (level == MemoryLevel.EASY) "Fácil" else "Medio",
+                text = when (level) {
+                    MemoryLevel.EASY -> "Fácil"
+                    MemoryLevel.MEDIUM -> "Medio"
+                    MemoryLevel.HARD -> "Difícil"
+                },
                 style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold
@@ -279,7 +307,13 @@ private fun MemoryGame(
 
         // Grid de cartas
         LazyVerticalGrid(
-            columns = GridCells.Fixed(if (level == MemoryLevel.EASY) 2 else 3),
+            columns = GridCells.Fixed(
+                when (level) {
+                    MemoryLevel.EASY -> 2
+                    MemoryLevel.MEDIUM -> 3
+                    MemoryLevel.HARD -> 4
+                }
+            ),
             modifier = Modifier
                 .weight(1f)
                 .padding(16.dp),
@@ -483,7 +517,8 @@ private fun CompletionDialog(
 
 enum class MemoryLevel {
     EASY,   // 2x2 = 4 cartas
-    MEDIUM  // 3x2 = 6 cartas
+    MEDIUM, // 3x2 = 6 cartas
+    HARD    // 4x3 = 12 cartas
 }
 
 data class MemoryCard(
@@ -503,6 +538,7 @@ private fun createMemoryCards(level: MemoryLevel): List<MemoryCard> {
     val pairsCount = when (level) {
         MemoryLevel.EASY -> 2    // 2 parejas = 4 cartas
         MemoryLevel.MEDIUM -> 3  // 3 parejas = 6 cartas
+        MemoryLevel.HARD -> 6    // 6 parejas = 12 cartas
     }
 
     val selectedAnimals = animals.shuffled().take(pairsCount)
